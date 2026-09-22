@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>هدية عيد ميلاد حلوشتي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1:#0B0710;
+    --bg-2:#160D1F;
+    --bg-3:#24102F;
+    --rose:#D9A7C7;
+    --rose-soft: rgba(217,167,199,0.35);
+    --gold:#D6B56D;
+    --gold-soft: rgba(214,181,109,0.35);
+    --ink:#F6F1F5;
+    --ink-dim: rgba(246,241,245,0.72);
+    --ink-faint: rgba(246,241,245,0.46);
+    --serif: 'Cormorant Garamond', 'Tajawal', serif;
+    --arabic: 'Tajawal', system-ui, sans-serif;
+    --space-s: clamp(0.75rem, 1.5vw, 1.1rem);
+    --space-m: clamp(1.5rem, 3vw, 2.5rem);
+    --space-l: clamp(2.5rem, 6vw, 5.5rem);
+    --space-xl: clamp(4rem, 10vw, 8rem);
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ scroll-padding-top: var(--safe-t); -webkit-text-size-adjust: 100%; }
+  html,body{
+    margin:0; padding:0; width:100%; max-width:100%;
+    overflow-x:hidden;
+    background: var(--bg-1);
+    color: var(--ink);
+    font-family: var(--arabic);
+  }
+  body{
+    padding-top: var(--safe-t);
+    padding-bottom: var(--safe-b);
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(217,167,199,0.10), transparent 60%),
+      radial-gradient(70% 60% at 85% 10%, rgba(214,181,109,0.07), transparent 55%),
+      linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+    min-height: 100vh;
+  }
+  img{ max-width:100%; display:block; }
+  button{ font-family: inherit; }
+  ::selection{ background: var(--rose-soft); color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+
+  /* ---------- decorative starfield (fixed, cheap) ---------- */
+  #starsBg{
+    position: fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background: var(--gold);
+    opacity:.35;
+    animation: twinkle 5s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:.15; transform: scale(1); }
+    50%{ opacity:.7; transform: scale(1.6); }
+  }
+
+  /* ---------- opening screen ---------- */
+  .opening{
+    position: fixed; inset:0; z-index: 100;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: var(--space-m);
+    text-align:center;
+    padding: calc(var(--safe-t) + 24px) 24px calc(var(--safe-b) + 24px);
+    background: radial-gradient(80% 60% at 50% 30%, rgba(217,167,199,0.10), transparent 60%), var(--bg-1);
+    transition: opacity 1s ease, visibility 1s ease, transform 1s ease;
+  }
+  .opening::before{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(35% 30% at 50% 20%, rgba(214,181,109,0.18), transparent 70%);
+    filter: blur(10px);
+    pointer-events:none;
+  }
+  .opening.is-closed{
+    opacity:0; visibility:hidden; transform: scale(1.04);
+    pointer-events:none;
+  }
+  .opening-eyebrow{
+    font-family: var(--serif); font-style: italic; font-weight:500;
+    color: var(--rose); letter-spacing: .02em;
+    font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+    opacity:0; animation: riseIn 1.1s ease .2s forwards;
+  }
+  .opening-title{
+    font-size: clamp(2rem, 8vw, 3.6rem);
+    font-weight:700; line-height:1.25; margin:0;
+    background: linear-gradient(90deg, var(--ink), var(--gold-soft) 50%, var(--ink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    opacity:0; animation: riseIn 1.1s ease .5s forwards;
+  }
+  .opening-sub{
+    font-size: clamp(0.95rem, 2.6vw, 1.2rem);
+    color: var(--ink-dim); font-weight:300; max-width: 26ch; margin:0;
+    opacity:0; animation: riseIn 1.1s ease 1.3s forwards;
+  }
+  @keyframes riseIn{
+    from{ opacity:0; transform: translateY(14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  .open-btn{
+    margin-top: var(--space-s);
+    position:relative;
+    border:1px solid var(--gold-soft);
+    background: linear-gradient(180deg, rgba(214,181,109,0.14), rgba(214,181,109,0.04));
+    color: var(--gold);
+    padding: 1rem 2.4rem;
+    min-height: 52px;
+    border-radius: 999px;
+    font-size: clamp(1rem, 2.6vw, 1.1rem);
+    font-weight:500;
+    cursor:pointer;
+    letter-spacing:.01em;
+    opacity:0; animation: riseIn 1.1s ease 2s forwards, glow 3.2s ease-in-out 3.1s infinite;
+    transition: transform .35s ease, background .35s ease, border-color .35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .open-btn:hover, .open-btn:focus-visible{
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(214,181,109,0.22), rgba(214,181,109,0.06));
+    border-color: var(--gold);
+  }
+  .open-btn:active{ transform: translateY(0) scale(.98); }
+  @keyframes glow{
+    0%,100%{ box-shadow: 0 0 0px rgba(214,181,109,0); }
+    50%{ box-shadow: 0 0 22px rgba(214,181,109,0.28); }
+  }
+
+  /* ---------- layout shell ---------- */
+  main{ position:relative; z-index:1; }
+  section{
+    position:relative;
+    width:100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .eyebrow-badge{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.45rem 1rem;
+    border:1px solid var(--rose-soft);
+    border-radius: 999px;
+    font-size: clamp(0.78rem, 1.8vw, 0.9rem);
+    color: var(--rose);
+    background: rgba(217,167,199,0.06);
+  }
+  .eyebrow-badge svg{ width:14px; height:14px; flex-shrink:0; }
+
+  [data-reveal]{
+    opacity:0; transform: translateY(22px);
+    transition: opacity .9s ease, transform .9s ease;
+  }
+  [data-reveal].in-view{ opacity:1; transform: translateY(0); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height: 92svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; gap: var(--space-s);
+    padding-top: calc(var(--space-xl) + var(--safe-t));
+  }
+  .hero-en{
+    font-family: var(--serif); font-style:italic; font-weight:600;
+    font-size: clamp(2.1rem, 7.5vw, 4.4rem);
+    line-height:1.15; margin:.6em 0 0;
+    background: linear-gradient(100deg, var(--gold-soft), var(--rose) 55%, var(--gold-soft));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-ar{
+    font-size: clamp(1.3rem, 4.2vw, 2rem);
+    font-weight:700; color: var(--ink); margin:0;
+  }
+  .hero-note{
+    max-width: 40ch;
+    color: var(--ink-dim); font-weight:300;
+    font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+    line-height:1.9; margin-top: var(--space-s);
+  }
+  .scroll-hint{
+    margin-top: var(--space-l);
+    width:22px; height:36px; border-radius:14px;
+    border:1px solid var(--ink-faint);
+    position:relative;
+  }
+  .scroll-hint::after{
+    content:''; position:absolute; top:6px; right:50%; transform:translateX(50%);
+    width:4px; height:8px; border-radius:2px; background: var(--gold);
+    animation: dip 1.8s ease-in-out infinite;
+  }
+  @keyframes dip{
+    0%,100%{ top:6px; opacity:1; } 60%{ top:16px; opacity:.3; }
+  }
+
+  /* ---------- section headings ---------- */
+  .section-head{ text-align:center; margin-bottom: var(--space-l); display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+  .section-title{
+    font-size: clamp(1.6rem, 4.4vw, 2.4rem);
+    font-weight:700; margin:0;
+  }
+
+  /* ---------- message card ---------- */
+  .message-card{
+    position:relative;
+    border-radius: clamp(18px, 3vw, 28px);
+    padding: clamp(1.6rem, 5vw, 3.2rem);
+    background: linear-gradient(165deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(246,241,245,0.09);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .message-card::before{
+    content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+    background: linear-gradient(140deg, var(--gold-soft), transparent 40%, var(--rose-soft));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events:none;
+  }
+  .message-text{
+    font-size: clamp(1.05rem, 2.6vw, 1.28rem);
+    line-height: 2.05;
+    color: var(--ink-dim);
+    font-weight:300;
+    margin:0;
+  }
+  .message-text strong{ color: var(--ink); font-weight:500; }
+  .message-sign{
+    margin-top: var(--space-m);
+    color: var(--gold);
+    font-family: var(--serif); font-style:italic; font-size: clamp(1.1rem,2.6vw,1.3rem);
+  }
+
+  /* ---------- wishes ---------- */
+  .wishes-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+    gap: clamp(0.9rem, 2.5vw, 1.4rem);
+  }
+  .wish-card{
+    border-radius: 18px;
+    padding: clamp(1.3rem, 3vw, 1.8rem) clamp(1.1rem, 3vw, 1.5rem);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(246,241,245,0.08);
+    display:flex; flex-direction:column; gap:.8rem;
+    transition: transform .4s ease, border-color .4s ease, background .4s ease;
+  }
+  .wish-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--gold-soft);
+    background: rgba(255,255,255,0.045);
+  }
+  .wish-icon{ width:26px; height:26px; color: var(--gold); }
+  .wish-title{ font-size: clamp(1.05rem, 2.4vw, 1.2rem); font-weight:500; margin:0; }
+
+  /* ---------- cake ---------- */
+  .cake-section{ text-align:center; }
+  .cake-wish-note{
+    max-width: 40ch; margin: 0 auto var(--space-m);
+    color: var(--ink-dim); font-weight:300; line-height:1.9;
+    font-size: clamp(0.95rem, 2.3vw, 1.08rem);
+  }
+  .cake-wish-note strong{ color: var(--gold); font-weight:500; }
+  .cake-wrap{
+    display:flex; flex-direction:column; align-items:center; gap: var(--space-m);
+  }
+  .cake-svg{ width: min(280px, 78vw); height:auto; }
+  .flame{ transform-origin: center bottom; animation: flicker 1.6s ease-in-out infinite; }
+  .flame.out{ animation:none; opacity:0; }
+  @keyframes flicker{
+    0%,100%{ transform: scaleY(1) rotate(0deg); opacity:1; }
+    30%{ transform: scaleY(1.08) rotate(-3deg); }
+    60%{ transform: scaleY(0.92) rotate(3deg); opacity:.92; }
+  }
+  .smoke{
+    opacity:0; transform-origin:center bottom;
+  }
+  .smoke.rise{
+    animation: smokeUp 1.4s ease-out forwards;
+  }
+  @keyframes smokeUp{
+    0%{ opacity:.55; transform: translateY(0) scale(1); }
+    100%{ opacity:0; transform: translateY(-26px) scale(1.6); }
+  }
+  .cake-status{
+    color: var(--ink-faint); font-size: clamp(0.85rem, 2.1vw, 0.98rem); font-weight:300;
+    min-height: 1.4em;
+  }
+  .cake-actions{ display:flex; flex-wrap:wrap; gap: .7rem; justify-content:center; }
+  .cake-btn{
+    border:1px solid var(--gold-soft);
+    background: rgba(214,181,109,0.06);
+    color: var(--gold);
+    padding: .8rem 1.7rem; min-height:48px;
+    border-radius:999px; font-size: clamp(0.9rem, 2.2vw, 1rem);
+    cursor:pointer;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .cake-btn:hover{ transform: translateY(-2px); background: rgba(214,181,109,0.12); }
+  .cake-btn[disabled]{ opacity:.45; cursor:default; transform:none; }
+  .cake-done{
+    margin-top: var(--space-s);
+    font-family: var(--serif); font-style:italic;
+    color: var(--rose); font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    opacity:0; transition: opacity .9s ease;
+  }
+  .cake-done.shown{ opacity:1; }
+
+  /* ---------- memories ---------- */
+  .memories-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: clamp(0.9rem, 2.5vw, 1.3rem);
+  }
+  .memory-frame{
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    border: 1px dashed rgba(214,181,109,0.4);
+    background: linear-gradient(160deg, rgba(217,167,199,0.05), rgba(214,181,109,0.03));
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; gap:.7rem; padding: 1.2rem;
+  }
+  .memory-frame svg{ width:30px; height:30px; color: var(--rose); opacity:.8; }
+  .memory-frame span{ color: var(--ink-faint); font-size: clamp(0.85rem, 2vw, 0.95rem); font-weight:300; }
+
+  /* ---------- surprise ---------- */
+  .surprise{ text-align:center; }
+  .surprise-btn{
+    border:1px solid var(--rose-soft);
+    background: rgba(217,167,199,0.06);
+    color: var(--rose);
+    padding: .95rem 2.1rem;
+    min-height:50px;
+    border-radius:999px;
+    font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+    cursor:pointer;
+    transition: transform .3s ease, background .3s ease;
+  }
+  .surprise-btn:hover{ transform: translateY(-2px); background: rgba(217,167,199,0.12); }
+  .surprise-reveal{
+    margin: var(--space-m) auto 0;
+    max-width: 46ch;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    color: var(--gold-soft); line-height:1.75;
+    opacity:0; max-height:0; overflow:hidden;
+    transition: opacity .8s ease, max-height .8s ease, margin .8s ease;
+  }
+  .surprise-reveal.shown{ opacity:1; max-height: 220px; margin-top: var(--space-m); }
+
+  /* ---------- final ---------- */
+  .final{ text-align:center; padding-bottom: calc(var(--space-xl) + var(--safe-b)); }
+  .final-kicker{ font-size: clamp(1rem, 2.4vw, 1.15rem); color: var(--ink-faint); font-weight:300; }
+  .final-title{ font-size: clamp(1.8rem, 5vw, 2.7rem); font-weight:700; margin:.5rem 0; }
+  .final-sub{
+    max-width: 42ch; margin: 0 auto; color: var(--ink-dim); font-weight:300;
+    font-size: clamp(1rem, 2.4vw, 1.15rem); line-height:1.9;
+  }
+  .final-btn{
+    margin-top: var(--space-l);
+    border:none;
+    background: linear-gradient(120deg, var(--gold), var(--rose));
+    color: var(--bg-1);
+    font-weight:700;
+    padding: 1.05rem 2.6rem;
+    min-height:54px;
+    border-radius:999px;
+    font-size: clamp(1rem, 2.6vw, 1.15rem);
+    cursor:pointer;
+    box-shadow: 0 18px 40px -16px rgba(214,181,109,0.55);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .final-btn:hover{ transform: translateY(-3px); box-shadow: 0 22px 46px -14px rgba(214,181,109,0.65); }
+  .final-btn:active{ transform: translateY(0) scale(.98); }
+
+  .final-surprise{
+    margin-top: var(--space-l);
+    opacity:0; max-height:0; overflow:hidden;
+    transition: opacity 1s ease, max-height 1s ease;
+  }
+  .final-surprise.shown{ opacity:1; max-height: 260px; }
+  .final-surprise p{
+    font-family: var(--serif); font-style:italic;
+    font-size: clamp(1.2rem, 3.4vw, 1.7rem);
+    color: var(--ink); max-width: 40ch; margin:0 auto;
+  }
+
+  footer{
+    text-align:center; padding: var(--space-l) var(--space-m) calc(var(--space-l) + var(--safe-b));
+    color: var(--ink-faint); font-size: 0.85rem; font-weight:300;
+  }
+
+  /* ---------- confetti ---------- */
+  #confettiRoot{
+    position:fixed; inset:0; pointer-events:none; z-index:60; overflow:hidden;
+  }
+  .confetti-piece{
+    position:absolute; top:-10px; width:7px; height:12px; border-radius:2px;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(400deg); opacity:.2; }
+  }
+
+  @media (max-width: 480px){
+    section{ padding-left: var(--space-s); padding-right: var(--space-s); }
+  }
+</style>
+</head>
+<body>
+
+  <div id="starsBg" aria-hidden="true"></div>
+
+  <div class="opening" id="opening">
+    <p class="opening-eyebrow">إلى حلاشة...</p>
+    <h1 class="opening-title">هديّة صغيرة مخبيها إلك</h1>
+    <p class="opening-sub">خذي نفس عميق، وافتحيها براحتك</p>
+    <button class="open-btn" id="openBtn">افتحي هديتك</button>
+  </div>
+
+  <div id="confettiRoot" aria-hidden="true"></div>
+
+  <main id="site">
+
+    <section class="hero" id="hero">
+      <span class="eyebrow-badge" data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v13M12 8c-1.7 0-3-1.1-3-2.6C9 4 10.3 3 12 3s3 1 3 2.4C15 6.9 13.7 8 12 8Zm0 0c1.7 0 3-1.1 3-2.6C15 4 13.7 3 12 3S9 4 9 5.4C9 6.9 10.3 8 12 8Z"/><rect x="3.5" y="8" width="17" height="4.5" rx="1.2"/><path d="M4.5 12.5h15v7.5a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1v-7.5Z"/></svg>
+        هدية عيد ميلاد
+      </span>
+      <h2 class="hero-en" data-reveal>Happy Birthday, Hala</h2>
+      <p class="hero-ar" data-reveal>كل عام وإنتِ بخير يا حلاشة</p>
+      <p class="hero-note" data-reveal>لشخص عزيز عليّ، وبعتبره أختي الصغيرة قبل ما يكون مجرد صديقة.</p>
+      <div class="scroll-hint" aria-hidden="true"></div>
+    </section>
+
+    <section id="message">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          رسالة إلك
+        </span>
+      </div>
+      <div class="message-card" data-reveal>
+        <p class="message-text">
+          حلاشة، الكلام ما بيوفّي قديش وجودك بحياتي صار إشي جميل ومميز.
+          إنتِ مش بس صديقة عزيزة، إنتِ <strong>بالنسبة إلي مثل أختي الصغيرة</strong>،
+          وبدي أشوفك دائماً مبسوطة وناجحة ومحققة كل إشي بتتمنيه.
+          <br><br>
+          بيوم ميلادك بتمنى إلك سنة جديدة مليانة فرح وراحة ونجاحات، وأيام حلوة تليق فيكِ.
+          كل عام وإنتِ بخير يا حلاشة، وإن شاء الله تضل ضحكتك موجودة بكل سنة جاية،
+          وتحققي كل أمنياتك وحدة وحدة.
+          <br><br>
+          وجودك بحياتي إشي بقدّره كثير، وإن شاء الله تضل أيامنا مليانة ذكريات حلوة.
+        </p>
+        <p class="message-sign">— بمحبة، دايماً</p>
+      </div>
+    </section>
+
+    <section id="wishes">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M18.4 5.6l-2.1 2.1M18.4 18.4l-2.1-2.1M21 12h-3M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/></svg>
+          أشياء بتمالك ياها
+        </span>
+        <h3 class="section-title">أمنيات من القلب</h3>
+      </div>
+      <div class="wishes-grid">
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.4-9.5 9-9.5 9Z"/></svg>
+          <p class="wish-title">فرح كثير</p>
+        </div>
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 9 9l-7 1 5 5-1.5 7L12 18l6.5 4L17 15l5-5-7-1-3-7Z"/></svg>
+          <p class="wish-title">نجاح أكبر</p>
+        </div>
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18c3-6 13-6 16 0"/><path d="M8 10a4 4 0 1 1 8 0c0 2-1.5 3-4 6-2.5-3-4-4-4-6Z"/></svg>
+          <p class="wish-title">أيام أهدى</p>
+        </div>
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 15c1 1.6 2.4 2.4 4 2.4s3-.8 4-2.4M9 9h.01M15 9h.01"/><circle cx="12" cy="12" r="9"/></svg>
+          <p class="wish-title">ضحكات ما تخلص</p>
+        </div>
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/></svg>
+          <p class="wish-title">أحلامك تتحقق</p>
+        </div>
+        <div class="wish-card" data-reveal>
+          <svg class="wish-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M3.5 9h17M8 3v4M16 3v4"/></svg>
+          <p class="wish-title">ذكريات أجمل</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cake-section" id="cake">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21v-7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v7"/><path d="M4 21h16"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/><path d="M12 3c-.8.8-.8 1.6 0 2.4"/></svg>
+          كيكة عيد ميلادك
+        </span>
+        <h3 class="section-title">لحظة الأمنية</h3>
+      </div>
+
+      <div class="cake-wrap" data-reveal>
+        <p class="cake-wish-note">
+          قبل ما تطفي الشموع، اقفلي عينك لحظة وتمنّي أمنية من قلبك.
+          <strong>خليها سر بينك وبين حالك</strong> — لا تكتبيها هون ولا حتى تحكيها لحدا،
+          خليها تتحقق بالحياة مش بالموقع.
+        </p>
+
+        <svg class="cake-svg" id="cakeSvg" viewBox="0 0 240 190" aria-hidden="true">
+          <defs>
+            <linearGradient id="cakeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#D9A7C7" stop-opacity="0.20"/>
+              <stop offset="1" stop-color="#D6B56D" stop-opacity="0.05"/>
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#D6B56D"/>
+              <stop offset="1" stop-color="#D9A7C7"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="120" cy="172" rx="86" ry="8" fill="none" stroke="#D6B56D" stroke-opacity="0.35" stroke-width="1.2"/>
+          <rect x="46" y="118" width="148" height="46" rx="10" fill="url(#cakeGrad)" stroke="#D6B56D" stroke-width="1.4" stroke-opacity="0.6"/>
+          <rect x="74" y="82" width="92" height="40" rx="9" fill="url(#cakeGrad)" stroke="#D6B56D" stroke-width="1.4" stroke-opacity="0.6"/>
+
+          <g class="candle-group" data-candle="0">
+            <rect x="84" y="58" width="4" height="24" rx="2" fill="#F6F1F5" fill-opacity="0.85"/>
+            <path class="flame" d="M86 50 C81 56,82 64,86 68 C90 64,91 56,86 50 Z" fill="url(#flameGrad)"/>
+            <path class="smoke" data-smoke="0" d="M86 50 q -4 -8 0 -14 q 4 6 0 14" stroke="#F6F1F5" stroke-width="1.2" fill="none"/>
+          </g>
+          <g class="candle-group" data-candle="1">
+            <rect x="101" y="58" width="4" height="24" rx="2" fill="#F6F1F5" fill-opacity="0.85"/>
+            <path class="flame" d="M103 50 C98 56,99 64,103 68 C107 64,108 56,103 50 Z" fill="url(#flameGrad)"/>
+            <path class="smoke" data-smoke="1" d="M103 50 q -4 -8 0 -14 q 4 6 0 14" stroke="#F6F1F5" stroke-width="1.2" fill="none"/>
+          </g>
+          <g class="candle-group" data-candle="2">
+            <rect x="118" y="54" width="4" height="28" rx="2" fill="#F6F1F5" fill-opacity="0.85"/>
+            <path class="flame" d="M120 46 C115 52,116 60,120 64 C124 60,125 52,120 46 Z" fill="url(#flameGrad)"/>
+            <path class="smoke" data-smoke="2" d="M120 46 q -4 -8 0 -14 q 4 6 0 14" stroke="#F6F1F5" stroke-width="1.2" fill="none"/>
+          </g>
+          <g class="candle-group" data-candle="3">
+            <rect x="135" y="58" width="4" height="24" rx="2" fill="#F6F1F5" fill-opacity="0.85"/>
+            <path class="flame" d="M137 50 C132 56,133 64,137 68 C141 64,142 56,137 50 Z" fill="url(#flameGrad)"/>
+            <path class="smoke" data-smoke="3" d="M137 50 q -4 -8 0 -14 q 4 6 0 14" stroke="#F6F1F5" stroke-width="1.2" fill="none"/>
+          </g>
+          <g class="candle-group" data-candle="4">
+            <rect x="152" y="58" width="4" height="24" rx="2" fill="#F6F1F5" fill-opacity="0.85"/>
+            <path class="flame" d="M154 50 C149 56,150 64,154 68 C158 64,159 56,154 50 Z" fill="url(#flameGrad)"/>
+            <path class="smoke" data-smoke="4" d="M154 50 q -4 -8 0 -14 q 4 6 0 14" stroke="#F6F1F5" stroke-width="1.2" fill="none"/>
+          </g>
+        </svg>
+
+        <p class="cake-status" id="cakeStatus">لما تجهزي أمنيتك، انفخي الشموع</p>
+
+        <div class="cake-actions">
+          <button class="cake-btn" id="micBlowBtn">انفخي الشموع 🎙️</button>
+          <button class="cake-btn" id="tapBlowBtn">ما في مايك؟ دوسي هون</button>
+        </div>
+
+        <p class="cake-done" id="cakeDone">تمنيتِ؟ يا رب تتحقق 🤍</p>
+      </div>
+    </section>
+
+    <section id="memories">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-4-4 3-3-2-6 4"/></svg>
+          ذكريات لسه ما انكتبت
+        </span>
+      </div>
+      <div class="memories-grid">
+        <div class="memory-frame" data-reveal>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-4-4 3-3-2-6 4"/></svg>
+          <span>ذكرياتنا القادمة...</span>
+        </div>
+        <div class="memory-frame" data-reveal>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-4-4 3-3-2-6 4"/></svg>
+          <span>صورة لازم نضيفها هون</span>
+        </div>
+        <div class="memory-frame" data-reveal>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-4-4 3-3-2-6 4"/></svg>
+          <span>لحظة جديدة لسه مستنيينها</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="surprise" id="surprise">
+      <div data-reveal>
+        <span class="eyebrow-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 17.3 5.8 21l1.4-7.2L2 8.6l7.3-1L12 1l2.7 6.6 7.3 1-5.2 5.2L18.2 21z"/></svg>
+          مفاجأة صغيرة
+        </span>
+        <div style="margin-top: 1.4rem;">
+          <button class="surprise-btn" id="surpriseBtn">في إشي ثاني...</button>
+        </div>
+        <p class="surprise-reveal" id="surpriseText">
+          مهما كبرت السنين، بتضلي دائماً أختي الصغيرة اللي بفرح لما أشوفها مبسوطة.
+        </p>
+      </div>
+    </section>
+
+    <section class="final" id="final">
+      <div data-reveal>
+        <p class="final-kicker">وأخيراً...</p>
+        <h3 class="final-title">كل عام وإنتِ بخير يا حلاشة</h3>
+        <p class="final-sub">من شخص بشوفك أكثر من مجرد صديقة... أخت صغيرة وعزيزة على القلب.</p>
+        <button class="final-btn" id="finalBtn">اضغطي هون 🎁</button>
+        <div class="final-surprise" id="finalSurprise">
+          <p>عقبال كل سنة يا أجمل أخت اختارتها الحياة، مش الدم.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>صُنعت هذه الهدية بمحبة، خصيصاً لحلاشة 🤍</footer>
+  </main>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* stars */
+  var starsBg = document.getElementById('starsBg');
+  var STAR_COUNT = 22;
+  for (var i = 0; i < STAR_COUNT; i++) {
+    var s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.top = (Math.random() * 100) + '%';
+    s.style.animationDelay = (Math.random() * 5) + 's';
+    s.style.animationDuration = (4 + Math.random() * 3) + 's';
+    starsBg.appendChild(s);
+  }
+
+  /* opening screen */
+  var opening = document.getElementById('opening');
+  var openBtn = document.getElementById('openBtn');
+  document.body.style.overflow = 'hidden';
+  openBtn.addEventListener('click', function () {
+    opening.classList.add('is-closed');
+    document.body.style.overflow = '';
+    launchConfetti(18);
+    opening.addEventListener('transitionend', function handler(e){
+      if (e.propertyName === 'opacity') {
+        opening.style.display = 'none';
+        opening.removeEventListener('transitionend', handler);
+      }
+    });
+  }, { once:true });
+
+  /* reveal on scroll */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  /* hidden surprise */
+  var surpriseBtn = document.getElementById('surpriseBtn');
+  var surpriseText = document.getElementById('surpriseText');
+  surpriseBtn.addEventListener('click', function () {
+    var showing = surpriseText.classList.toggle('shown');
+    surpriseBtn.textContent = showing ? 'إخفاء' : 'في إشي ثاني...';
+  });
+
+  /* final surprise */
+  var finalBtn = document.getElementById('finalBtn');
+  var finalSurprise = document.getElementById('finalSurprise');
+  finalBtn.addEventListener('click', function () {
+    finalSurprise.classList.add('shown');
+    launchConfetti(reduceMotion ? 0 : 42);
+    finalBtn.disabled = true;
+    finalBtn.style.opacity = '.7';
+  });
+
+  /* birthday cake candles */
+  var candlesOut = false;
+  var cakeStatus = document.getElementById('cakeStatus');
+  var cakeDone = document.getElementById('cakeDone');
+  var micBlowBtn = document.getElementById('micBlowBtn');
+  var tapBlowBtn = document.getElementById('tapBlowBtn');
+  var audioCtx = null, micStream = null, rafId = null, listenTimeout = null;
+
+  function extinguishAllCandles() {
+    if (candlesOut) return;
+    candlesOut = true;
+    var groups = document.querySelectorAll('.candle-group');
+    groups.forEach(function (g, i) {
+      setTimeout(function () {
+        var flame = g.querySelector('.flame');
+        var smoke = g.querySelector('.smoke');
+        if (flame) flame.classList.add('out');
+        if (smoke) {
+          smoke.classList.add('rise');
+          setTimeout(function () { smoke.classList.remove('rise'); }, 1500);
+        }
+      }, i * 90);
+    });
+    cakeStatus.textContent = 'انطفت الشموع ✨';
+    setTimeout(function () {
+      cakeDone.classList.add('shown');
+      launchConfetti(reduceMotion ? 0 : 16);
+    }, groups_length_delay());
+    function groups_length_delay(){ return (document.querySelectorAll('.candle-group').length * 90) + 500; }
+    stopListening();
+    micBlowBtn.setAttribute('disabled', 'true');
+    tapBlowBtn.setAttribute('disabled', 'true');
+  }
+
+  function stopListening() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    if (listenTimeout) { clearTimeout(listenTimeout); listenTimeout = null; }
+    if (micStream) { micStream.getTracks().forEach(function (t) { t.stop(); }); micStream = null; }
+    if (audioCtx) { try { audioCtx.close(); } catch (e) {} audioCtx = null; }
+  }
+
+  tapBlowBtn.addEventListener('click', function () {
+    extinguishAllCandles();
+  });
+
+  micBlowBtn.addEventListener('click', function () {
+    if (candlesOut) return;
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      cakeStatus.textContent = 'المايك مش متوفر، جربي زر "دوسي هون"';
+      return;
+    }
+    micBlowBtn.textContent = 'بستنى النفخة... 🫧';
+    micBlowBtn.setAttribute('disabled', 'true');
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+      micStream = stream;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      var source = audioCtx.createMediaStreamSource(stream);
+      var analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 512;
+      source.connect(analyser);
+      var data = new Uint8Array(analyser.frequencyBinCount);
+      cakeStatus.textContent = 'جاهزة... انفخي الشموع الآن!';
+      var loudFrames = 0;
+      var REQUIRED_FRAMES = 6;
+      var THRESHOLD = 34;
+
+      function tick() {
+        analyser.getByteTimeDomainData(data);
+        var sum = 0;
+        for (var i = 0; i < data.length; i++) {
+          var v = data[i] - 128;
+          sum += Math.abs(v);
+        }
+        var avg = sum / data.length;
+        if (avg > THRESHOLD) {
+          loudFrames++;
+        } else {
+          loudFrames = Math.max(0, loudFrames - 1);
+        }
+        if (loudFrames >= REQUIRED_FRAMES) {
+          extinguishAllCandles();
+          return;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+      tick();
+
+      listenTimeout = setTimeout(function () {
+        if (!candlesOut) {
+          cakeStatus.textContent = 'ما وصلت نفخة، جربي كمان أو دوسي "دوسي هون"';
+          micBlowBtn.textContent = 'انفخي الشموع 🎙️';
+          micBlowBtn.removeAttribute('disabled');
+          stopListening();
+        }
+      }, 15000);
+    }).catch(function () {
+      cakeStatus.textContent = 'ما قدرنا نوصل للمايك، دوسي "دوسي هون" وبتنطفي الشموع';
+      micBlowBtn.textContent = 'انفخي الشموع 🎙️';
+      micBlowBtn.removeAttribute('disabled');
+    });
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stopListening();
+  });
+
+  /* lightweight confetti */
+  var confettiRoot = document.getElementById('confettiRoot');
+  var colors = ['#D6B56D', '#D9A7C7', '#F6F1F5'];
+  function launchConfetti(count) {
+    if (!count) return;
+    for (var i = 0; i < count; i++) {
+      (function () {
+        var piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = (Math.random() * 100) + '%';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        var duration = 2.4 + Math.random() * 1.6;
+        piece.style.animationDuration = duration + 's';
+        piece.style.opacity = String(0.7 + Math.random() * 0.3);
+        confettiRoot.appendChild(piece);
+        setTimeout(function () {
+          if (piece.parentNode) piece.parentNode.removeChild(piece);
+        }, duration * 1000 + 200);
+      })();
+    }
+  }
+})();
+</script>
+</body>
+</html>
